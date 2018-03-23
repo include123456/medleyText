@@ -1,0 +1,79 @@
+
+创建 目录   
+ --global 代表全局 一个电脑上 不加的话只在当前目录有效
+git config --global user.name  [username] 设置用户
+git config --global user.email [email]
+mkdir  
+git init 初始化仓库 
+第一推送的时候必须现在github 上建立项目 
+添加远程仓库
+ git remote add origin https://github.com/yourgithubID/gitRepo.git #建立远程仓库关联本地仓库  
+或者直接clone 下来 
+
+
+ssh -keygen -t rsa -C "gaowei" 
+生成密钥
+git add readme.txt   添加要提交文档
+git commit -m  "备注" 提交 
+git status 命令可以让我们时刻掌握仓库当前的状态
+git diff readme.txt   添加比较文档 当前和历史版本区别 
+diff --git 标签 origin/标签 //本地与远程主机之间的区别 标签就是分支的名称
+
+git log  命令查看历史版本
+git log --pretty=oneline  出来版本号和提交时备注 git commit -m 引号内的注释
+git reset --hard HEAD^ 回退到上一版本
+用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+ （单独head 加文档 查看内容）
+
+
+  HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，
+使用命令git reset --hard commit_id。
+   穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+    要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+$ git checkout -- readme.txt
+
+命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
+总之，就是让这个文件回到最近一次git commit或git add时的状态。 
+git checkout -- test.txt  回滚修改
+rm test.txt 删除 
+那就用命令git rm删掉，并且git commit
+
+
+查看分支：git branch 	 查看本地分支
+	  git branch  -a 查看远程分支
+
+创建分支：git branch <name>
+
+切换分支：git checkout <name>
+
+创建+切换分支：git checkout -b <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+
+当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
+$ git tag v1.0 设置标签
+git tag 按字母排序
+git show <tagname>查看标签信息：
+git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+
+命令git tag -d <tagname>可以删除一个本地标签；
+
+命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+ origin git为你默认创建的指向这个远程代码库的标签
+
+git remote 不带参数，列出已经存在的远程分支
+	-v 查看所有分支
+第一次进行push时需要进行pull
+git pull origin master (标签)更新分支 
+命令git push origin <tagname>可以推送一个本地标签；
+
+命令git push origin --tags可以推送全部未推送过的本地标签；
+
